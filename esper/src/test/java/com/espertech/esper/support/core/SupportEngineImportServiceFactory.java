@@ -9,13 +9,17 @@
  * *************************************************************************************
  */
 
-package com.espertech.esper.core.context.mgr;
+package com.espertech.esper.support.core;
 
-import com.espertech.esper.epl.spec.ContextDetail;
-import com.espertech.esper.filter.FilterSpecCompiled;
+import com.espertech.esper.client.ConfigurationEngineDefaults;
+import com.espertech.esper.epl.core.EngineImportService;
+import com.espertech.esper.epl.core.EngineImportServiceImpl;
 
-import java.util.List;
+import java.util.TimeZone;
 
-public interface ContextControllerFactoryFactorySvc {
-    public ContextControllerFactory make(ContextControllerFactoryContext factoryContext, ContextDetail detail, List<FilterSpecCompiled> optFiltersNested, ContextStateCache contextStateCache);
+public class SupportEngineImportServiceFactory {
+
+    public static EngineImportServiceImpl make() {
+        return new EngineImportServiceImpl(true, true, true, false, null, TimeZone.getDefault(), ConfigurationEngineDefaults.ThreadingProfile.NORMAL);
+    }
 }
